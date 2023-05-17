@@ -1,0 +1,65 @@
+﻿<Window x:Class="Water_meter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Water_meter"
+        mc:Ignorable="d"
+        Title="Показатели приборов учета горячей и холодной воды" Height="390" Width="800" FontSize="18" 
+             MinWidth="800" MinHeight="390" Loaded="Window_Loaded" Background="#FFE6E4D1" Icon="water.ico">
+    <Window.DataContext>
+        <local:Counter_water/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.8*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Label Content="Производитель" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" x:Name="TB_Country" Text="{Binding Contry}" VerticalContentAlignment="Center"/>
+        
+        <Label Content="Модель" Grid.Row="1" VerticalAlignment="Center" />
+        <TextBox Grid.Column="1" Grid.Row="1" x:Name="TB_Model" Text="{Binding model}"  VerticalContentAlignment="Center"/>
+        
+        <Label Content="Серйиный номер" Grid.Row="2" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1" Grid.Row="2" x:Name="TB_Serial_number" Text="{Binding serial_number}"  VerticalContentAlignment="Center"/>
+        
+        <Label Content="Дата последней проверки" Grid.Row="3" VerticalAlignment="Center" />
+        <TextBox Grid.Column="1" Grid.Row="3" x:Name="TB_last_check" Text="{Binding last_check}" Background="White" VerticalContentAlignment="Center"/>
+        
+        <CheckBox Content=" Предназначен для горячей воды" Grid.Row="4" x:Name="Chek_hot_water" 
+                  VerticalAlignment="Center" Checked="Chek_hot_water_Checked" HorizontalAlignment="Left" Unchecked="Chek_hot_water_Unchecked" />
+        <CheckBox Content="Не предназначен для горячей воды" Grid.Row="4" Grid.Column="1" 
+                  x:Name="Chek_not_hot_water" VerticalAlignment="Center" Checked="Chek_not_hot_water_Checked" HorizontalAlignment="Left" Unchecked="Chek_not_hot_water_Unchecked"/>
+
+        <Label Content="Предыдущие показания холодной воды" Grid.Row="5" VerticalContentAlignment="Center" Foreground="Blue"/>
+        <TextBox x:Name="old_counter_cold" Grid.Column="2" Grid.Row="5" Text="{Binding cold_water}" VerticalContentAlignment="Center" />
+
+        <Label Content="Новые показания холодной воды" Grid.Row="6" VerticalContentAlignment="Center" Foreground="Blue"/>
+        <TextBox x:Name="TB_New_coldwater" Text="{Binding new_cold_water}" Grid.Column="2" Grid.Row="6" VerticalContentAlignment="Center" PreviewTextInput="TB_New_coldwater_PreviewTextInput"/>
+
+        <Label Content="Предыдущие показания горячей воды" Grid.Row="7" VerticalContentAlignment="Center" Foreground="Red"/>
+        <TextBox x:Name="old_counter_hot" Grid.Column="2" Grid.Row="7" Text="{Binding hot_water}" VerticalContentAlignment="Center"/>
+
+        <Label Content="Новые показания горячей воды" Grid.Row="8" VerticalAlignment="Center" Foreground="Red"/>
+        <TextBox Text="{Binding new_hot_water}" Grid.Column="2" Grid.Row="8"  x:Name="TB_hot_water"  VerticalContentAlignment="Center" PreviewTextInput="TB_hot_water_PreviewTextInput"/>
+        
+        <Button Content="ПЕРЕДАТЬ ПОКАЗАНИЯ" Grid.Row="9" Grid.ColumnSpan ="2" Background="#FFCBC7D8" Click="Button_Click"/>
+        <Button Content="ВЫХОД" Grid.Row="10" Grid.ColumnSpan ="2" Background="#FF9280D4" Click="Button_Exit"/>
+
+    </Grid>
+</Window>
