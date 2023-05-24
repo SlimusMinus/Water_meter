@@ -10,6 +10,28 @@
     <Window.DataContext>
         <local:Counter_water/>
     </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="style">
+            <Setter Property="Control.Opacity" Value="0.5"/>
+            <Style.Triggers>
+                <Trigger Property="Control.IsMouseOver" Value="True">
+                    <Setter Property="Control.Opacity" Value="1"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="style_TB">
+            <Setter Property="ItemsControl.FontSize" Value="16" />
+            <Setter Property="ItemsControl.FontFamily" Value="Tahoma"/>
+            <Setter Property="ItemsControl.FontWeight" Value="Bold"/>
+        </Style>
+        <Style x:Key ="style_ChB">
+            <Setter Property="Control.FontSize" Value="15"/>
+        </Style>
+        <Style BasedOn="{StaticResource style}" TargetType="Button"/>
+        <Style BasedOn="{StaticResource style_TB}" TargetType="Label"/>
+        <Style BasedOn="{StaticResource style_ChB}" TargetType="CheckBox"/>
+
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
